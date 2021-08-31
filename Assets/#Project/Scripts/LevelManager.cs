@@ -15,6 +15,9 @@ public class LevelManager : MonoBehaviour
     public Material[] materials;
 
     public ItemBehavior[] items;        // tableau 
+
+    public List<int> selected = new List<int>();     // declare une liste
+
     private Dictionary<int, Material> itemMaterial = new Dictionary<int, Material>();     // <key, value>  & instantiate 
 
     // Start is called before the first frame update
@@ -73,13 +76,27 @@ public class LevelManager : MonoBehaviour
     }
     public void RevealMaterial(int id)
     {
-        Material material = itemMaterial[id];
-        items[id].GetComponent<Renderer>().material = material;
+        if (!selected.Contains(id))     // si l'id n'est pas dans la list "selected"
+        {
+            selected.Add(id);   // rajouter l id selectione
+            Material material = itemMaterial[id];
+            items[id].GetComponent<Renderer>().material = material;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (selected.Count == 2)
+        {
+            if (itemMaterial[selected[0]] == itemMaterial[selected[1]])         // si premier obj selectioner et deux obj selection sont egal il y a un match! 
+            {
+                Debug.Log("Bingoo");
+            }
+            else
+            {
+                //reset
+            }
+        }
     }
 }
