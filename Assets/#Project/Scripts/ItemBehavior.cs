@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
-    public int id;
+    public int id = -1;
+    public LevelManager manager;
 
     // Start is called before the first frame update
     void Start()

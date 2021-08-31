@@ -29,7 +29,8 @@ public class LevelManager : MonoBehaviour
 
                 items[index] = item.GetComponent<ItemBehavior>();       // avoir ItemBehavior sur le prefab sinon null reference 
 
-                items[index].id = index;            // .id = atteindre l'id de l'object
+                items[index].id = index;            // .id = atteindre l'id de l'object  -- stockuer les object 
+                items[index].manager = this;        // this = l'instance en cours du script / le LevelManager qui est entrain de jouer 
 
                 index++;
             }
