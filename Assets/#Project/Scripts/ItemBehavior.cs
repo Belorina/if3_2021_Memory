@@ -20,7 +20,7 @@ public class ItemBehavior : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && mouseOver)        // click gauche = 0 // quand la souris remonte pour avoir qu une fois (a cause de update  sans le UP il y a plusieur message )
         {         
-            Debug.Log($"Click: {id}");
+            manager.RevealMaterial(id);
         }
 
     }

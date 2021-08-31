@@ -65,12 +65,16 @@ public class LevelManager : MonoBehaviour
             itemMaterial.Add(id1, materials[i]);
             itemMaterial.Add(id2, materials[i]);                // deux identifiant unique, qui ne reapparait plus plustard, et donner le meme material aux deux
 
-            // visuel code 
-            items[id1].GetComponent<Renderer>().material = materials[i];             // renderer = composant de rendue 
-            items[id2].GetComponent<Renderer>().material = materials[i];             // renderer = composant de rendue 
+            // // visuel code 
+            // items[id1].GetComponent<Renderer>().material = materials[i];             // renderer = composant de rendue 
+            // items[id2].GetComponent<Renderer>().material = materials[i];             // renderer = composant de rendue 
 
         }
-
+    }
+    public void RevealMaterial(int id)
+    {
+        Material material = itemMaterial[id];
+        items[id].GetComponent<Renderer>().material = material;
     }
 
     // Update is called once per frame
