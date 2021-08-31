@@ -10,12 +10,22 @@ public class ItemBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    void OnMouseOver()      // detection du souris sur object
+    {
+        transform.localScale = new Vector3(1, 2, 1);    // double l'ax des y 
+    }
+    void OnMouseExit()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+
 }
