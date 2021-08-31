@@ -25,7 +25,7 @@ public class ItemBehavior : MonoBehaviour
     }
     void OnMouseExit()
     {
-        transform.localScale = new Vector3(1, 1, 1);
+        transform.localScale = Vector3.one;     // = new Vector3(1, 1, 1)
     }
 
 }
