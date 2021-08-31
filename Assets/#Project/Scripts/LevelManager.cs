@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject itemPrefab;
 
+    public Material[] Materials;
+
     public ItemBehavior[] items;        // tableau 
 
     // Start is called before the first frame update
