@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     public ItemBehavior[] items;        // tableau 
 
     public List<int> selected = new List<int>();     // declare une liste
+    public List<int> matches = new List<int>();
 
     private Dictionary<int, Material> itemMaterial = new Dictionary<int, Material>();     // <key, value>  & instantiate 
 
@@ -93,7 +94,7 @@ public class LevelManager : MonoBehaviour
 
     public void RevealMaterial(int id)
     {
-        if (resetOnGoing == false && !selected.Contains(id))     // si on a selectioner 2  object && si l'id n'est pas dans la list "selected"
+        if (resetOnGoing == false && !selected.Contains(id) && !matches.Contains(id))     // si on a selectioner 2  object && si l'id n'est pas dans la list "selected" && matches nas pas l identifiant
         {
             selected.Add(id);   // rajouter l id selectione
             Material material = itemMaterial[id];
@@ -113,7 +114,9 @@ public class LevelManager : MonoBehaviour
         {
             if (itemMaterial[selected[0]] == itemMaterial[selected[1]])         // si premier obj selectioner et deux obj selection sont egal il y a un match! 
             {
-                Debug.Log("Bingoo");
+                matches.Add(selected[0]);
+                matches.Add(selected[1]);
+
             }
             else
             {
