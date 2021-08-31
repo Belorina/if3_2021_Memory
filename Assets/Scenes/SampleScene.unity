@@ -389,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354005628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.42, y: -0.5, z: 1}
+  m_LocalPosition: {x: 1.72, y: -0.5, z: 0.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -442,6 +442,7 @@ MonoBehaviour:
   col: 4
   gapRow: 1.5
   gapCol: 1.5
+  timeBeforeReset: 1
   itemPrefab: {fileID: 7992039803468630209, guid: 79fabec6fa9202742ae34f3154135c05, type: 3}
   materials:
   - {fileID: 2100000, guid: 447f900eda6e74a4f8f5bd5383188da5, type: 2}
@@ -450,4 +451,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 4d47773ad6da4d24a933e17f233365da, type: 2}
   - {fileID: 2100000, guid: aea4bda1cbb1b4c40a555b0f045c28d8, type: 2}
   - {fileID: 2100000, guid: 6fce70f2fb28f1b4da730af7aaa0c2ca, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: c98bbaaa18101b342be5bf2c3ca6fe14, type: 2}
   items: []
+  selected: 

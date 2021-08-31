@@ -10,9 +10,14 @@ public class LevelManager : MonoBehaviour
     public float gapRow = 1.5f;     // f pour declarer un float 
     public float gapCol = 1.5f;
 
+    [Range(0f, 5f)]        // /!\ variable mis en slider dans inspecteur (metre juste au dessus du variable)
+    public float timeBeforeReset = 1f;
+    private bool resetOnGoing = false;
+
     public GameObject itemPrefab;
 
     public Material[] materials;
+    public Material defaultMaterial;
 
     public ItemBehavior[] items;        // tableau 
 
@@ -32,6 +37,8 @@ public class LevelManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(x * gapCol, 0, z * gapRow);       // etablir la position ( Vector3(x, y, z) )
                 GameObject item = Instantiate(itemPrefab, position, Quaternion.identity);
+
+                item.GetComponent<Renderer>().material = defaultMaterial;
 
                 items[index] = item.GetComponent<ItemBehavior>();       // avoir ItemBehavior sur le prefab sinon null reference exception
 
@@ -74,14 +81,29 @@ public class LevelManager : MonoBehaviour
 
         }
     }
+
+    private IEnumerator ResetMaterials(int id1, int id2)
+    {
+        resetOnGoing = true;
+        yield return new WaitForSeconds(timeBeforeReset);                    // yield est un retour, mais recommence (a l apelle) a partir du retour qu il a fait. 
+        ResetMaterial(id1);
+        ResetMaterial(id2);
+        resetOnGoing = false;
+    }
+
     public void RevealMaterial(int id)
     {
-        if (!selected.Contains(id))     // si l'id n'est pas dans la list "selected"
+        if (resetOnGoing == false && !selected.Contains(id))     // si on a selectioner 2  object && si l'id n'est pas dans la list "selected"
         {
             selected.Add(id);   // rajouter l id selectione
             Material material = itemMaterial[id];
             items[id].GetComponent<Renderer>().material = material;
         }
+    }
+
+    private void ResetMaterial(int id)
+    {
+        items[id].GetComponent<Renderer>().material = defaultMaterial;
     }
 
     // Update is called once per frame
@@ -95,8 +117,9 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                //reset
+                StartCoroutine(ResetMaterials(selected[0], selected[1]));
             }
+            selected.Clear();
         }
     }
 }
