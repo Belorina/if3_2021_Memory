@@ -347,4 +347,11 @@ MonoBehaviour:
   gapRow: 1.5
   gapCol: 1.5
   itemPrefab: {fileID: 7992039803468630209, guid: 79fabec6fa9202742ae34f3154135c05, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 447f900eda6e74a4f8f5bd5383188da5, type: 2}
+  - {fileID: 2100000, guid: 36e51ecdc2a720b4a967046dfee85dbc, type: 2}
+  - {fileID: 2100000, guid: 24b7328acff71f34b8ffa88b78b19c41, type: 2}
+  - {fileID: 2100000, guid: 4d47773ad6da4d24a933e17f233365da, type: 2}
+  - {fileID: 2100000, guid: aea4bda1cbb1b4c40a555b0f045c28d8, type: 2}
+  - {fileID: 2100000, guid: 6fce70f2fb28f1b4da730af7aaa0c2ca, type: 2}
   items: []
