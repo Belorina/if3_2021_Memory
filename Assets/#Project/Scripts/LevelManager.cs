@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public float timeBeforeReset = 1f;
     private bool resetOnGoing = false;
 
+
     public GameObject itemPrefab;
 
     public Material[] materials;
@@ -25,6 +27,7 @@ public class LevelManager : MonoBehaviour
     public List<int> matches = new List<int>();
 
     private Dictionary<int, Material> itemMaterial = new Dictionary<int, Material>();     // <key, value>  & instantiate 
+    public UnityEvent whenPlayerWins;
 
     // Start is called before the first frame update
     void Start()
@@ -87,9 +90,16 @@ public class LevelManager : MonoBehaviour
     {
         resetOnGoing = true;
         yield return new WaitForSeconds(timeBeforeReset);                    // yield est un retour, mais recommence (a l apelle) a partir du retour qu il a fait. 
+
         ResetMaterial(id1);
         ResetMaterial(id2);
         resetOnGoing = false;
+    }
+
+    private IEnumerator Win()
+    {
+        yield return new WaitForSeconds(timeBeforeReset);
+        whenPlayerWins?.Invoke();               // /!\ !! 
     }
 
     public void RevealMaterial(int id)
@@ -116,6 +126,11 @@ public class LevelManager : MonoBehaviour
             {
                 matches.Add(selected[0]);
                 matches.Add(selected[1]);
+
+                if (matches.Count >= row * col)
+                {
+                    StartCoroutine(Win()); 
+                }
 
             }
             else
