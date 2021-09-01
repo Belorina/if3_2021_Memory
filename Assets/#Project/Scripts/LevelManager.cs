@@ -109,12 +109,15 @@ public class LevelManager : MonoBehaviour
             selected.Add(id);   // rajouter l id selectione
             Material material = itemMaterial[id];
             items[id].GetComponent<Renderer>().material = material;
+
+            items[id].HasBeenSelected(true);
         }
     }
 
     private void ResetMaterial(int id)
     {
         items[id].GetComponent<Renderer>().material = defaultMaterial;
+        items[id].HasBeenSelected(false);
     }
 
     // Update is called once per frame
@@ -127,6 +130,10 @@ public class LevelManager : MonoBehaviour
                 matches.Add(selected[0]);
                 matches.Add(selected[1]);
 
+                items[selected[0]].HasBeenMatched();
+                items[selected[1]].HasBeenMatched();
+
+
                 if (matches.Count >= row * col)
                 {
                     StartCoroutine(Win()); 
@@ -136,6 +143,10 @@ public class LevelManager : MonoBehaviour
             else
             {
                 StartCoroutine(ResetMaterials(selected[0], selected[1]));
+
+                items[selected[0]].HasBeenSelected(false);
+                items[selected[1]].HasBeenSelected(false);
+
             }
             selected.Clear();
         }
