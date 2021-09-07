@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public float timer = 0f;
+
     private int row;
     private int col;
 
@@ -14,7 +16,6 @@ public class LevelManager : MonoBehaviour
     [Range(0f, 5f)]        // /!\ variable mis en slider dans inspecteur (metre juste au dessus du variable)
     public float timeBeforeReset = 1f;
     private bool resetOnGoing = false;
-
 
     public GameObject itemPrefab;
 
@@ -33,7 +34,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         row = PlayerPrefs.GetInt("row", 3);     // donner un valeur par defaut pour ce proteger
-        col = PlayerPrefs.GetInt("col", 4); 
+        col = PlayerPrefs.GetInt("col", 4);
 
         items = new ItemBehavior[row * col];    // creation tableau et grandeur 
         int index = 0;
@@ -126,6 +127,9 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        timer += Time.deltaTime;
+
         if (selected.Count == 2)
         {
             if (itemMaterial[selected[0]] == itemMaterial[selected[1]])         // si premier obj selectioner et deux obj selection sont egal il y a un match! 
@@ -139,6 +143,7 @@ public class LevelManager : MonoBehaviour
 
                 if (matches.Count >= row * col)
                 {
+                    PlayerPrefs.SetFloat("timer", timer);       // prendre le temps quand on a gagnier 
                     StartCoroutine(Win());
                 }
 

@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-
-    public string EasyButton;
-    public string NormalButton;
-
     public void change(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -37,11 +33,21 @@ public class SceneChanger : MonoBehaviour
 
         SceneManager.LoadScene("GameScene");
     }
-    
+
+
+    // void OnGUI()
+    // {
+    //     if (SceneManager.GetActiveScene().name == "WinScene")
+    //     {
+    //         float timer = PlayerPrefs.GetFloat("timer", 10);
+    //         GUI.Label(new Rect(25, 25, 100, 40), " your time is " + timer);
+
+    //     }
+    // }
+
     public void quit()
     {
         Application.Quit();
     }
-
 }
 
