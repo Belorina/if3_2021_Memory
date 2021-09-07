@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-
-    public int EasyButton;
-    public int row = 3;
-    public int col = 4;
+    private int row;
+    private int col;
 
     public float gapRow = 1.5f;     // f pour declarer un float 
     public float gapCol = 1.5f;
@@ -35,7 +32,9 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        row = PlayerPrefs.GetInt("row", 3);     // donner un valeur par defaut pour ce proteger
+        col = PlayerPrefs.GetInt("col", 4); 
+
         items = new ItemBehavior[row * col];    // creation tableau et grandeur 
         int index = 0;
 

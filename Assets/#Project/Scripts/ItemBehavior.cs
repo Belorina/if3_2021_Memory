@@ -24,7 +24,6 @@ public class ItemBehavior : MonoBehaviour
         {
             manager.RevealMaterial(id);
         }
-
     }
 
     void OnMouseOver()      // detection du souris sur object
@@ -36,14 +35,11 @@ public class ItemBehavior : MonoBehaviour
     {
         mouseOver = false;
         animator.SetBool("MouseOver", false);            // seule moyen de communiquer avec l animator 
-
-
     }
 
     public void HasBeenSelected(bool selected)
     {
         animator.SetBool("ItemSelected", selected);
-
     }
 
     public void HasBeenMatched()        // pas de parametre car il est toujours true 
