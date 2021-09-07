@@ -152,8 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8f98dd325e8864da41113ea2de3a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EasyGameScene: EasyGameScene
   row: 3
-  col: 4
+  col: 2
   gapRow: 1.5
   gapCol: 1.5
   timeBeforeReset: 1

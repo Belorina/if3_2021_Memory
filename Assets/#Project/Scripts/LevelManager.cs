@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+
+    public int EasyButton;
     public int row = 3;
     public int col = 4;
 
@@ -32,6 +35,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         items = new ItemBehavior[row * col];    // creation tableau et grandeur 
         int index = 0;
 
@@ -136,7 +140,7 @@ public class LevelManager : MonoBehaviour
 
                 if (matches.Count >= row * col)
                 {
-                    StartCoroutine(Win()); 
+                    StartCoroutine(Win());
                 }
 
             }
